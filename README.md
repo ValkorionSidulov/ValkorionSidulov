@@ -1,4 +1,4 @@
-[Header] <p align="center"> <img width="200" src="https://github.com/ValkorionSidulov/ValkorionSidulov/blob/main/assets/Header.png"</p>
+![Header] (https://github.com/ValkorionSidulov/ValkorionSidulov/blob/main/assets/Header.png)
 
 About me
 
