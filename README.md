@@ -1,7 +1,8 @@
 ![Header](https://github.com/ValkorionSidulov/ValkorionSidulov/blob/main/assets/Header.png)
 
-### I am the creator of games on the Unity engine
+### I'm the creator of games on the Unity Engine
 
 Languages and Tools
+![C#](https://img.shields.io/badge/-C-090909?style=for-the-badge&logo=C#&logoColor=1225D2)
 
 Follow Me
