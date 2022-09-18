@@ -3,7 +3,7 @@
 ### I'm the creator of games on the Unity Engine
 
 ### Languages and Tools:
-![C#](https://img.shields.io/badge/-C#-090909?style=for-the-badge&logo=C%2b%2b&logoColor=6296CC)
+![C](https://img.shields.io/badge/-C-090909?style=for-the-badge&logo=C&logoColor=6296CC)
 ![Unity](https://img.shields.io/badge/Unity-090909?style=for-the-badge&logo=unity&logoColor=47C5FB)
 
 ### Socials:
