@@ -1,0 +1,86 @@
+using UnityEngine;
+
+namespace SpaceShooter
+{
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class SpaceShip : Destructible
+    {
+        /// <summary>
+        /// Масса корабля для автоматической уставновки в Ригид.
+        /// </summary>
+        [Header("Space ship")]
+        [SerializeField] private float m_Mass;
+
+        /// <summary>
+        /// Толкающая сила вперёд.
+        /// </summary>
+        [SerializeField] private float m_Thurst;
+
+        /// <summary>
+        /// Вращающая сила.
+        /// </summary>
+        [SerializeField] private float m_Mobility;
+
+        /// <summary>
+        /// Максимальная линейная скорость.
+        /// </summary>
+        [SerializeField] private float m_MaxLinearVelocity;
+
+        /// <summary>
+        /// Максимальная вращательная скорость. В градусах/сек
+        /// </summary>
+        [SerializeField] private float m_MaxAngularVelocity;
+
+        /// <summary>
+        /// Сохраненная ссылка на ригид.
+        /// </summary>
+        private Rigidbody2D m_Rigid;
+
+        #region Public API
+
+        /// <summary>
+        /// Управление линейной тягой от -1.0 до +1.0
+        /// </summary>
+        public float ThurstControl { get; set; }
+
+        /// <summary>
+        /// Управление вращательной тягой от -1.0 до +1.0
+        /// </summary>
+        public float TorqueControl { get; set; }
+
+
+        #endregion
+
+        #region Unity Event
+        protected override void Start()
+        {
+            base.Start();
+
+            m_Rigid = GetComponent<Rigidbody2D>();
+            m_Rigid.mass = m_Mass;
+
+            m_Rigid.inertia = 1;
+        }
+
+        private void FixedUpdate()
+        {
+            UpdateRigidBody();
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Метод добавления сил кораблю для движения.
+        /// </summary>
+        private void UpdateRigidBody()
+        {
+            m_Rigid.AddForce(ThurstControl * m_Thurst * transform.up * Time.fixedDeltaTime, ForceMode2D.Force);
+
+            m_Rigid.AddForce(-m_Rigid.velocity * (m_Thurst / m_MaxLinearVelocity) * Time.fixedDeltaTime, ForceMode2D.Force);
+
+            m_Rigid.AddTorque(TorqueControl * m_Mobility * Time.fixedDeltaTime, ForceMode2D.Force);
+
+            m_Rigid.AddTorque(-m_Rigid.angularVelocity * (m_Mobility / m_MaxAngularVelocity) * Time.fixedDeltaTime, ForceMode2D.Force);
+        }
+    }
+}
